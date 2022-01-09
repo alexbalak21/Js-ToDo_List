@@ -3,6 +3,7 @@ const todoInput = document.querySelector(".todoInput");
 const todoBtn = document.querySelector(".todoBtn");
 const todoList = document.querySelector(".todoList");
 const filter = document.querySelector(".options select");
+let deleted = "";
 
 //EVENT LISTENTERS
 
@@ -13,7 +14,6 @@ function addTodo(event) {
     if (todoInput.value == "") return null;
     const task = document.createElement("div");
     task.classList.add("todo");
-    // task.classList.add("uncompleted");
     const li = document.createElement("li");
     const complete = document.createElement("button");
     const del = document.createElement("button");
@@ -26,33 +26,31 @@ function addTodo(event) {
     todoInput.value = "";
     todoList.appendChild(task);
     complete.addEventListener("click", completed);
-
     del.addEventListener("click", deleteTodo);
-
-    // del.addEventListener("click", () => {
-    //     task.remove();
-    // });
-    // complete.addEventListener("click", () => {
-    //     li.style.color = "limegreen";
-    // });
 }
 
 function deleteTodo(element) {
     const todo = element.target.parentElement;
-    todo.remove();
+    deleted = element.target.parentElement;
+    todo.classList.add("fall");
+    todo.addEventListener("transitionend", () => todo.remove());
 }
 
 function completed(e) {
     const todo = e.target.parentElement;
     todo.classList.toggle("completed");
-    // todo.classList.toggle("uncompleted");
 }
 
 filter.addEventListener("change", filterTodo);
 
 function filterTodo(e) {
+    if (filter.value == "deleted") {
+        deleted.classList.remove("fall");
+        console.log(deleted);
+        todoList.append(deleted);
+        filter.value = "all";
+    }
     const todos = document.querySelectorAll(".todo");
-    console.log(todos);
     todos.forEach((todo) => {
         if (filter.value == "all") todo.style.display = "flex";
         if (filter.value == "completed") {
