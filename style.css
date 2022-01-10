@@ -1,71 +1,137 @@
+:root {
+    --yellow: #f6d365;
+    --orange: #fda085;
+    --btn-del: #ff6f47;
+    --btn-green: #49cc49;
+}
+
 * {
-    box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    background-color: darkgray;
-    min-height: 800px;
+body {
+    background: linear-gradient(120deg, var(--yellow), var(--orange));
+    color: white;
+    min-height: 100vh;
+}
+header {
+    font-size: 1.5rem;
 }
 
-.container h1 {
-    text-align: center;
-    padding: 20px 0;
-}
-.container .todo {
-    position: relative;
-    width: 800px;
-    height: 600px;
-    margin: auto;
-    border: 1px solid white;
-    text-align: center;
-    border-radius: 6px;
+header,
+form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container .input {
-    margin: 40px 0;
+form input,
+form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background-color: white;
 }
 
-.container .todo input {
-    height: 28px;
-    width: 300px;
-    border-radius: 6px;
-    border: 1px solid black;
-    font-size: 20px;
-    vertical-align: middle;
+form button {
+    color: var(--orange);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.container button {
-    height: 28px;
-    width: 56px;
-    margin-top: -10px;
-    border-radius: 6px;
+form button:hover {
+    background-color: var(--orange);
+    color: white;
 }
 
-.container .todo ul {
-    margin: auto;
-    width: 370px;
+.todoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-ul li {
+.todoList {
+    min-width: 468px;
     list-style: none;
-    border: 2px solid white;
-    padding: 4px 0;
-    border-radius: 6px;
-    font-size: 20px;
-    min-height: 30px;
-    max-width: 368px;
-    margin: 8px 0;
 }
 
-ul li div {
-    margin-right: 2px;
-    margin-top: -3px;
-    /* border: 1px solid blue; */
-    /* display: inline-block; */
-    float: right;
+.todo {
+    margin: 0.5rem;
+    background-color: white;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s ease;
+}
+
+.todo li {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.complete,
+.delete {
+    background-color: var(--btn-del);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.todo button.complete {
+    background-color: var(--btn-green);
+}
+
+.fa-check,
+.fa-trash {
+    pointer-events: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+
+.options {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.options select {
+    font-size: 1.2rem;
+    color: var(--btn-del);
+    width: 11.5rem;
+    cursor: pointer;
+    padding: 0.9rem;
+}
+
+.options::after {
+    content: "\25BC";
+    position: absolute;
+    background: var(--btn-del);
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+}
+
+.fall {
+    transform: translateY(10rem);
+    opacity: 0;
 }

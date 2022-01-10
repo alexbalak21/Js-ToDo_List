@@ -5,19 +5,32 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
-        <title>ToDO List</title>
+        <title>ToDO V2</title>
     </head>
     <body>
-        <div class="container">
-            <h1>ToDO List</h1>
-            <div class="todo">
-                <div class="input">
-                    <input class="task" type="text" />
-                    <button id="add">ADD</button>
-                </div>
-                <ul></ul>
+        <header>
+            <h1>ToDo List</h1>
+        </header>
+        <form>
+            <input type="text" class="todoInput" />
+            <button class="todoBtn">
+                <i class="fas fa-plus-square"></i>
+            </button>
+            <div class="options">
+                <select class="todoFilter" name="todo">
+                    <option value="all">All</option>
+                    <option value="completed">Cmpleted</option>
+                    <option value="uncompleted">Uncopmleted</option>
+                    <option value="deleted">Undo</option>
+                </select>
             </div>
+        </form>
+
+        <div class="todoContainer">
+            <ul class="todoList"></ul>
         </div>
-        <script src="index.js"></script>
+
+        <script src="app.js"></script>
+        <script src="https://kit.fontawesome.com/43d48f153a.js" crossorigin="anonymous"></script>
     </body>
 </html>
