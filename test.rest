@@ -1,0 +1,26 @@
+GET  http://localhost:3000
+content-type: application/json
+
+###
+POST http://localhost:3000/new
+content-type: application/json
+
+{
+    "title": "test"
+}
+
+###
+
+
+DELETE http://localhost:3000/delete/8
+content-type: application/json
+
+
+###
+
+PUT http://localhost:3000/update/14
+content-type: application/json
+
+{
+    "done": "true"
+}
